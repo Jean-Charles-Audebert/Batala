@@ -1,0 +1,5 @@
+%syntax-version=1.0.0
+%project=batala
+
+1.create_table 2023-06-13T08:25:11Z iousco,,, <iousco@ubuntu> # creating tables
+2.select_views 2023-06-13T08:25:12Z iousco,,, <iousco@ubuntu> # adding selecting views

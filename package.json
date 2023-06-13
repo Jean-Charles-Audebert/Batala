@@ -7,7 +7,14 @@
   "scripts": {
     "start": "node server.js",
     "dev": "nodemon -e js,mjs,json, server.js",
-    "test": "jest --watch"
+    "test": "ava --watch",
+    "db:seed": "node ./data/seeding.js",
+    "db:prod:build": "npm run db:prod:init && npm run db:prod:deploy && npm run db:seed",
+    "db:prod:init": "bash sqitch_script.sh -i",
+    "db:prod:deploy": "bash sqitch_script.sh -d",
+    "db:dev:build": "npm run db:dev:init && npm run db:dev:deploy && npm run db:seed",
+    "db:dev:init": "bash dev_sqitch_script.sh -i",
+    "db:dev:deploy": "bash dev_sqitch_script.sh -d"
   },
   "repository": {
     "type": "git",
@@ -20,14 +27,19 @@
   },
   "homepage": "https://github.com/Jean-Charles-Audebert/Batala#readme",
   "dependencies": {
+    "bcrypt": "^5.1.0",
+    "cors": "^2.8.5",
+    "dotenv": "^16.1.4",
     "express": "^4.18.2",
-    "nodemon": "^2.0.22"
+    "fs": "^0.0.1-security",
+    "nodemon": "^2.0.22",
+    "pg": "^8.11.0"
   },
   "devDependencies": {
+    "@faker-js/faker": "^8.0.2",
+    "ava": "^5.3.0",
     "eslint": "^8.42.0",
     "eslint-config-prettier": "^8.8.0",
-    "jest": "^29.5.0",
-    "prettier": "^2.8.8",
-    "supertest": "^6.3.3"
+    "prettier": "^2.8.8"
   }
 }
